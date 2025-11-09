@@ -12,16 +12,16 @@
       width: 100%;
       background: url('https://i.imgur.com/QUESCLI.jpeg') no-repeat center center fixed;
       background-size: cover;
+      font-family: system-ui, sans-serif;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: white;
-      font-family: system-ui, sans-serif;
       cursor: pointer;
     }
     .overlay {
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.4);
       padding: 1rem 1.5rem;
       border-radius: 1rem;
     }
@@ -38,12 +38,12 @@
     .test(navigator.userAgent.toLowerCase());
 
   if (isMobile) {
-    // Mobile users: tap anywhere → your destination
+    // Mobile users: show the landing image and wait for a tap
     document.body.addEventListener("click", () => {
       window.location.href = mobileURL;
     });
   } else {
-    // Desktop visitors: go directly to your desktop site
+    // Desktop visitors: send them directly to the desktop site
     window.location.href = desktopURL;
   }
 </script>
