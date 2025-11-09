@@ -16,12 +16,12 @@
     }
   </style>
   <script>
-    const desktopURL = "https://www.msn.com/it-it";
+    const desktopURL = "https://www.msn.com/it-it"; // Your original desktop URL
     const isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i
       .test(navigator.userAgent.toLowerCase());
 
     if (!isMobile) {
-      // Desktop users redirected immediately BEFORE loading the image
+      // **PC Redirection** (happens before the browser loads the CSS background image)
       window.location.replace(desktopURL);
     }
   </script>
