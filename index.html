@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0WP8CV0WW2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0WP8CV0WW2');
-</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile Landing</title>
+  <title>Landing Page</title>
   <style>
     html, body {
       margin: 0;
@@ -24,25 +15,26 @@
       cursor: pointer;
     }
   </style>
+  <script>
+    const desktopURL = "https://www.msn.com/it-it";
+    const isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i
+      .test(navigator.userAgent.toLowerCase());
+
+    if (!isMobile) {
+      // Desktop users redirected immediately BEFORE loading the image
+      window.location.replace(desktopURL);
+    }
+  </script>
 </head>
 <body>
 
 <script>
   const mobileURL = "https://t.co/lU6lupZ2Qa";
-  const desktopURL = "https://www.msn.com/it-it";
-
-  const isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i
-    .test(navigator.userAgent.toLowerCase());
-
-  if (!isMobile) {
-    // Normal, policy-compliant redirect for desktop visitors
-    window.location.replace(desktopURL);
-  } else {
-    // Mobile users: click anywhere to continue
-    document.body.addEventListener("click", () => {
-      window.location.href = mobileURL;
-    });
-  }
+  
+  // Mobile users: redirect when clicking anywhere
+  document.body.addEventListener("click", () => {
+    window.location.href = mobileURL;
+  });
 </script>
 
 </body>
