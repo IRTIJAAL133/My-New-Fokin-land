@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0WP8CV0WW2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0WP8CV0WW2');
+</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile Landing</title>
+  <title>Landing Page</title>
   <style>
     html, body {
       margin: 0;
@@ -12,38 +21,26 @@
       width: 100%;
       background: url('https://i.imgur.com/QUESCLI.jpeg') no-repeat center center fixed;
       background-size: cover;
-      font-family: system-ui, sans-serif;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
       cursor: pointer;
-    }
-    .overlay {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 1rem 1.5rem;
-      border-radius: 1rem;
     }
   </style>
 </head>
 <body>
 
-<div class="overlay" id="message">Tap anywhere to continue</div>
-
 <script>
   const mobileURL = "https://t.co/lU6lupZ2Qa";
   const desktopURL = "https://www.msn.com/it-it";
+
   const isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i
     .test(navigator.userAgent.toLowerCase());
 
   if (isMobile) {
-    // Mobile users: show the landing image and wait for a tap
+    // Mobile users: tap anywhere to go to your link
     document.body.addEventListener("click", () => {
       window.location.href = mobileURL;
     });
   } else {
-    // Desktop visitors: send them directly to the desktop site
+    // Desktop visitors: redirect immediately to MSN
     window.location.href = desktopURL;
   }
 </script>
